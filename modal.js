@@ -48,4 +48,7 @@ function launchModal() {
 
 // /!\ TO FIX /!\ //
 
-  // cross to close the form don't work
+  // cross to close the form don't work put an event listener to close the form penser a faire un switch à la fermeture pour pas revenir sur la validation
+
+
+  //prevent default
