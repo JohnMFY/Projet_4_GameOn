@@ -19,13 +19,60 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 function launchModal() {
   modalbg.style.display = "block";
 }
+///////////////////////////////////////////////////////////////////////////////////
 
+// Prevent default to avoid reloding the form if object not true //
+const Submit = document.getElementById('submit')
+
+Submit.addEventListener('click', (e) =>{
+  e.preventDefault()
+
+  //do a common Regex for first & last name + error message
+  const Regex_2_20_Letters = (regex) =>{
+    return /^[A-Z a-z\s]{3,20}$/.test(regex)
+  }
+  let errorMessage = `Chiffre et symboles ne sont pas autorisé. Nombre de caractères autorisés 2 à 20.`
+
+    //////////////////////
+    function FirstName(){
+    /////////////////////
+
+      // catch the entry
+      const first = document.querySelector('#first').value
+      const FirstNameErrorMessage = document.getElementById('FirstNameErrorMessage')
+
+      // if/else to test the regex
+      if(Regex_2_20_Letters(first)){
+       FirstNameErrorMessage.innerHTML = ''
+       return true
+      } else {
+        FirstNameErrorMessage.innerText = errorMessage
+        return false
+      }
+    }
+    
+    //////////////////////
+    function LastName(){
+    /////////////////////
+      
+      // catch the entry
+      const last = document.querySelector('#last').value
+      const LastNameErrorMessage = document.getElementById('LastNameErrorMessage')
+
+      // if/else to test the regex
+      if(Regex_2_20_Letters(last)){
+        LastNameErrorMessage.innerHTML = ''
+        return true
+      } else {
+        LastNameErrorMessage.innerText = errorMessage
+        return false
+      }
+    }
+ })
+
+  // Last name = same
 
 // Data recuperation //
-
-  //do a common Regex for first & last name
-    // First name = fonction catch the entry with a querySelector & put if(regex ok = true)/else = false 
-    // Last name = same
     
     //Email = function => catch the entry regex email test => if/else
 
