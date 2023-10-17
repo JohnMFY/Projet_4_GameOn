@@ -20,6 +20,15 @@ function launchModal() {
   modalbg.style.display = "block";
 }
 ///////////////////////////////////////////////////////////////////////////////////
+                        //  CLOSE BUTTON FOR MODAL //
+///////////////////////////////////////////////////////////////////////////////////
+
+ // cross to close the form don't work put an event listener to close the form
+
+///////////////////////////////////////////////////////////////////////////////////
+                          //  TEST OF THE FORM  //
+///////////////////////////////////////////////////////////////////////////////////
+
 
 // Prevent default to avoid reloding the form if object not true //
 const Submit = document.getElementById('submit')
@@ -27,14 +36,14 @@ const Submit = document.getElementById('submit')
 Submit.addEventListener('click', (e) =>{
   e.preventDefault()
 
-  //do a common Regex for first & last name + error message
-  const Regex_2_20_Letters = (regex) =>{
-    return /^[A-Z a-z\s]{3,20}$/.test(regex)
-  }
-  let errorMessage = `Chiffre et symboles ne sont pas autorisé. Nombre de caractères autorisés 2 à 20.`
-
+  /////////// Common Regex for first & last name + error message ///////////
+    const Regex_2_20_Letters = (test) =>{
+      return /^[A-Z a-z\s]{3,20}$/.test(test)
+    }
+    let errorMessage = `Chiffre et symboles ne sont pas autorisé. Nombre de caractères autorisés 2 à 20.`
+  /////////////////////////////////////////////////////////////////////////
     //////////////////////
-    function FirstName(){
+    function FirstNameTest(){
     /////////////////////
 
       // catch the entry
@@ -52,7 +61,7 @@ Submit.addEventListener('click', (e) =>{
     }
     
     //////////////////////
-    function LastName(){
+    function LastNameTest(){
     /////////////////////
       
       // catch the entry
@@ -68,13 +77,33 @@ Submit.addEventListener('click', (e) =>{
         return false
       }
     }
- })
 
-  // Last name = same
+
+  //////////////////////Regex email//////////////////////
+    const regexTestEmail = (test) =>{
+      return /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(test)
+    }
+  ////////////////////////////////////////////
+
+    //////////////////////
+    function emailTest(){
+    /////////////////////
+      const email = document.querySelector('#email').value
+      const EmailErrorMessage = document.getElementById('EmailErrorMessage')
+
+      if(regexTestEmail(email)){
+        EmailErrorMessage.innerText =''
+          return true
+      } else{
+        EmailErrorMessage.innerText = "L'email n'est pas valide"
+        return false
+      }
+    }
+
+
+})
 
 // Data recuperation //
-    
-    //Email = function => catch the entry regex email test => if/else
 
     //Birthday = faire un check si no valeur = error | use a date regex
     //tournaments = faire un check si no valeur = error | num regex
@@ -95,7 +124,4 @@ Submit.addEventListener('click', (e) =>{
 
 // /!\ TO FIX /!\ //
 
-  // cross to close the form don't work put an event listener to close the form penser a faire un switch à la fermeture pour pas revenir sur la validation
-
-
-  //prevent default
+//penser a faire un switch à la fermeture pour pas revenir sur la validation
