@@ -23,7 +23,10 @@ function launchModal() {
                         //  CLOSE BUTTON FOR MODAL //
 ///////////////////////////////////////////////////////////////////////////////////
 
- // cross to close the form don't work put an event listener to close the form
+  const close = document.getElementById('close')
+  close.addEventListener("click",() => {
+    console.log('test')
+  })
 
 ///////////////////////////////////////////////////////////////////////////////////
                           //  TEST OF THE FORM  //
