@@ -23,8 +23,8 @@ function launchModal() {
                         //  CLOSE BUTTON FOR MODAL //
 ///////////////////////////////////////////////////////////////////////////////////
 
-  const close = document.getElementById('close')
-  close.addEventListener("click",() => {
+  const closeBtn = document.getElementById('close')
+  closeBtn.addEventListener("click",() => {
     console.log('test')
   })
 
