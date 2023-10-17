@@ -516,7 +516,11 @@ footer {
     text-align: center;
   }
 }
-
+  /* ERROR MESSAGE STYLE*/
+.error-message{
+  color: red;
+  font-size: 1rem;
+}
 @keyframes modalopen {
   from {
     opacity: 0;
