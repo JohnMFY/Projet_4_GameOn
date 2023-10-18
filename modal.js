@@ -19,19 +19,21 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 function launchModal() {
   modalbg.style.display = "block";
 }
+
+
 ///////////////////////////////////////////////////////////////////////////////////
                         //  CLOSE BUTTON FOR MODAL //
 ///////////////////////////////////////////////////////////////////////////////////
 
   const closeBtn = document.getElementById('close')
   closeBtn.addEventListener("click",() => {
-    console.log('test')
+    modalbg.style.display = "none";
   })
+
 
 ///////////////////////////////////////////////////////////////////////////////////
                           //  TEST OF THE FORM  //
 ///////////////////////////////////////////////////////////////////////////////////
-
 
 // Prevent default to avoid reloding the form if object not true //
 const Submit = document.getElementById('submit')
@@ -39,48 +41,47 @@ const Submit = document.getElementById('submit')
 Submit.addEventListener('click', (e) =>{
   e.preventDefault()
 
-  /////////// Common Regex for first & last name + error message ///////////
+  /////////// Common Regex First & Last name + error message ///////////
     const Regex_2_20_Letters = (test) =>{
       return /^[A-Z a-z\s]{3,20}$/.test(test)
     }
     let errorMessage = `Chiffre et symboles ne sont pas autorisé. Nombre de caractères autorisés 2 à 20.`
-  /////////////////////////////////////////////////////////////////////////
-    //////////////////////
-    function FirstNameTest(){
-    /////////////////////
+  /////////////////////////////////////////////////////////////////////
+  //////////////////////
+  function FirstNameTest(){
+  /////////////////////
 
-      // catch the entry
-      const first = document.querySelector('#first').value
-      const FirstNameErrorMessage = document.getElementById('FirstNameErrorMessage')
+    // catch the entry
+    const first = document.querySelector('#first').value
+    const FirstNameErrorMessage = document.getElementById('FirstNameErrorMessage')
 
-      // if/else to test the regex
-      if(Regex_2_20_Letters(first)){
-       FirstNameErrorMessage.innerHTML = ''
-       return true
-      } else {
-        FirstNameErrorMessage.innerText = errorMessage
-        return false
-      }
+    // if/else to test the regex
+    if(Regex_2_20_Letters(first)){
+      FirstNameErrorMessage.innerHTML = ''
+      return true
+    } else {
+      FirstNameErrorMessage.innerText = errorMessage
+      return false
     }
+  }
     
-    //////////////////////
-    function LastNameTest(){
-    /////////////////////
-      
-      // catch the entry
-      const last = document.querySelector('#last').value
-      const LastNameErrorMessage = document.getElementById('LastNameErrorMessage')
+  //////////////////////
+  function LastNameTest(){
+  /////////////////////
+    
+    // catch the entry
+    const last = document.querySelector('#last').value
+    const LastNameErrorMessage = document.getElementById('LastNameErrorMessage')
 
-      // if/else to test the regex
-      if(Regex_2_20_Letters(last)){
-        LastNameErrorMessage.innerHTML = ''
-        return true
-      } else {
-        LastNameErrorMessage.innerText = errorMessage
-        return false
-      }
+    // if/else to test the regex
+    if(Regex_2_20_Letters(last)){
+      LastNameErrorMessage.innerHTML = ''
+      return true
+    } else {
+      LastNameErrorMessage.innerText = errorMessage
+      return false
     }
-
+  }
 
   //////////////////////Regex email//////////////////////
     const regexTestEmail = (test) =>{
@@ -88,20 +89,20 @@ Submit.addEventListener('click', (e) =>{
     }
   ////////////////////////////////////////////
 
-    //////////////////////
-    function emailTest(){
-    /////////////////////
-      const email = document.querySelector('#email').value
-      const EmailErrorMessage = document.getElementById('EmailErrorMessage')
+  //////////////////////
+  function emailTest(){
+  /////////////////////
+    const email = document.querySelector('#email').value
+    const EmailErrorMessage = document.getElementById('EmailErrorMessage')
 
-      if(regexTestEmail(email)){
-        EmailErrorMessage.innerText =''
-          return true
-      } else{
-        EmailErrorMessage.innerText = "L'email n'est pas valide"
-        return false
-      }
+    if(regexTestEmail(email)){
+      EmailErrorMessage.innerText =''
+        return true
+    } else{
+      EmailErrorMessage.innerText = "L'email n'est pas valide"
+      return false
     }
+  }
 
 
 })
