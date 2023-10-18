@@ -26,8 +26,10 @@ function launchModal() {
 ///////////////////////////////////////////////////////////////////////////////////
 
   const closeBtn = document.getElementById('close')
+
   closeBtn.addEventListener("click",() => {
-    modalbg.style.display = "none";
+    modalbg.style.display = "none"
+    formData.value = '';
   })
 
 
@@ -87,7 +89,7 @@ Submit.addEventListener('click', (e) =>{
     const regexTestEmail = (test) =>{
       return /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(test)
     }
-  ////////////////////////////////////////////
+  //////////////////////////////////////////////////////
 
   //////////////////////
   function emailTest(){
@@ -104,27 +106,48 @@ Submit.addEventListener('click', (e) =>{
     }
   }
 
-
-})
-
-// Data recuperation //
+  //////////////////////
+  function Birthday(){
+  /////////////////////
 
     //Birthday = faire un check si no valeur = error | use a date regex
+  }
+  
+  //////////////////////
+  function Tournaments(){
+  /////////////////////
+
     //tournaments = faire un check si no valeur = error | num regex
+  }
+
+  //////////////////////
+  function City(){
+  /////////////////////
 
     // radio city search how to listen radio & error if no selection
+  }
+  
+  //////////////////////
+  function useCondition(){
+  /////////////////////
+
     // checkbox use condition check si check on if not => error
+  }
+
+  //////////////////////
+  function adCheckbox(){
+  /////////////////////
+
     // checkbox ad listen to get the data
 
-// IF ALL TRUE = collecting value //
+  }
 
+  // IF ALL TRUE = collecting value //
   //create on object from the data
   // send the data in Local Storage (JSON.stringify)
 
-// User Friendly//
 
-  // maybe put a popup to tell the form is send
-
+})
 
 // /!\ TO FIX /!\ //
 
