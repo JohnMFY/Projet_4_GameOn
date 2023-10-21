@@ -26,10 +26,11 @@ function launchModal() {
 ///////////////////////////////////////////////////////////////////////////////////
 
   const closeBtn = document.getElementById('close')
+  document.getElementById('form')
 
   closeBtn.addEventListener("click",() => {
     modalbg.style.display = "none"
-    formData.value = '';
+    document.getElementById('Form').reset()
   })
 
 
@@ -38,9 +39,9 @@ function launchModal() {
 ///////////////////////////////////////////////////////////////////////////////////
 
 // Prevent default to avoid reloding the form if object not true //
-const Submit = document.getElementById('submit')
+const submit = document.getElementById('submit')
 
-Submit.addEventListener('click', (e) =>{
+submit.addEventListener('click', (e) =>{
   e.preventDefault()
 
   /////////// Common Regex First & Last name + error message ///////////
