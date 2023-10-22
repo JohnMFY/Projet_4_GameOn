@@ -26,7 +26,6 @@ function launchModal() {
 ///////////////////////////////////////////////////////////////////////////////////
 
   const closeBtn = document.getElementById('close')
-  document.getElementById('form')
 
   closeBtn.addEventListener("click",() => {
     modalbg.style.display = "none"
@@ -38,118 +37,136 @@ function launchModal() {
                           //  TEST OF THE FORM  //
 ///////////////////////////////////////////////////////////////////////////////////
 
-// Prevent default to avoid reloding the form if object not true //
-const submit = document.getElementById('submit')
+  // Prevent default to avoid reloding the form if object not true //
+  const submit = document.getElementById('submit')
 
-submit.addEventListener('click', (e) =>{
-  e.preventDefault()
+  submit.addEventListener('click', (e) =>{
+    e.preventDefault()
 
-  /////////// Common Regex First & Last name + error message ///////////
-    const Regex_2_20_Letters = (test) =>{
-      return /^[A-Z a-z\s]{3,20}$/.test(test)
-    }
-    let errorMessage = `Chiffre et symboles ne sont pas autorisé. Nombre de caractères autorisés 2 à 20.`
-  /////////////////////////////////////////////////////////////////////
-  //////////////////////
-  function FirstNameTest(){
-  /////////////////////
+      /////////// Common Regex First & Last name + error message ///////////
+        const Regex_2_20_Letters = (test) =>{
+          return /^[A-Z a-z\s]{3,20}$/.test(test)
+        }
+        let errorMessage = `Chiffre et symboles ne sont pas autorisé. Nombre de caractères autorisés 2 à 20.`
+      /////////////////////////////////////////////////////////////////////
+      
+      //////////////////////
+      function firstNameTest(){
+      /////////////////////
 
-    // catch the entry
-    const first = document.querySelector('#first').value
-    const FirstNameErrorMessage = document.getElementById('FirstNameErrorMessage')
+        // catch the entry
+        const first = document.querySelector('#first').value
+        const firstNameErrorMessage = document.getElementById('FirstNameErrorMessage')
 
-    // if/else to test the regex
-    if(Regex_2_20_Letters(first)){
-      FirstNameErrorMessage.innerHTML = ''
-      return true
-    } else {
-      FirstNameErrorMessage.innerText = errorMessage
-      return false
-    }
-  }
-    
-  //////////////////////
-  function LastNameTest(){
-  /////////////////////
-    
-    // catch the entry
-    const last = document.querySelector('#last').value
-    const LastNameErrorMessage = document.getElementById('LastNameErrorMessage')
+        // if/else to test the regex
+        if(Regex_2_20_Letters(first)){
+          firstNameErrorMessage.innerHTML = ''
+          return true
+        } else {
+          firstNameErrorMessage.innerText = errorMessage
+          return false
+        }
+      }
+        
+      //////////////////////
+      function lastNameTest(){
+      /////////////////////
+        
+        // catch the entry
+        const last = document.querySelector('#last').value
+        const LastNameErrorMessage = document.getElementById('LastNameErrorMessage')
 
-    // if/else to test the regex
-    if(Regex_2_20_Letters(last)){
-      LastNameErrorMessage.innerHTML = ''
-      return true
-    } else {
-      LastNameErrorMessage.innerText = errorMessage
-      return false
-    }
-  }
+        // if/else to test the regex
+        if(Regex_2_20_Letters(last)){
+          LastNameErrorMessage.innerHTML = ''
+          return true
+        } else {
+          LastNameErrorMessage.innerText = errorMessage
+          return false
+        }
+      }
 
-  //////////////////////Regex email//////////////////////
-    const regexTestEmail = (test) =>{
-      return /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(test)
-    }
-  //////////////////////////////////////////////////////
+      //////////////////////Regex email//////////////////////
+        const regexTestEmail = (test) =>{
+          return /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(test)
+        }
+      //////////////////////////////////////////////////////
 
-  //////////////////////
-  function emailTest(){
-  /////////////////////
-    const email = document.querySelector('#email').value
-    const EmailErrorMessage = document.getElementById('EmailErrorMessage')
+      //////////////////////
+      function emailTest(){
+      /////////////////////
+        const email = document.querySelector('#email').value
+        const EmailErrorMessage = document.getElementById('EmailErrorMessage')
 
-    if(regexTestEmail(email)){
-      EmailErrorMessage.innerText =''
-        return true
-    } else{
-      EmailErrorMessage.innerText = "L'email n'est pas valide"
-      return false
-    }
-  }
+        if(regexTestEmail(email)){
+          EmailErrorMessage.innerText =''
+            return true
+        } else{
+          EmailErrorMessage.innerText = "L'email n'est pas valide"
+          return false
+        }
+      }
 
-  //////////////////////
-  function Birthday(){
-  /////////////////////
+      //////////////////////
+      function birthday(){
+      /////////////////////
+        const birthdate = document.forms["form"]["birthdate"].value;
+        const dateRegex = /^([0-9]{2})-([0-9]{2})-([0-9]{4})$/;
+        if (birthdate == null || !dateRegex.test(birthdate)) {
+            const birthdateErrorMessage = getElementById('BirthdateErrorMessage');
+            birthdateErrorMessage.innerText = 'Rentrez votre date de naissance'
+            return false;
+        } else {
+            return true
+        }
+      }
+      
+      //////////////////////
+      function tournaments(){
+      /////////////////////
+      const tournamentsInput = document.forms["form"]["quantity"].value;
+        if (tournamentsInput == null) {
+          const tournamentsErrorMessage = getElementById('TournamentErrorMessage');
+          tournamentsErrorMessage.innerText = 'Renseignez ce champ'
+          return false;
+        } else {
+          tournamentsErrorMessage.innerText = ''
+          return true
+        }
+      }
 
-    //Birthday = faire un check si no valeur = error | use a date regex
-  }
-  
-  //////////////////////
-  function Tournaments(){
-  /////////////////////
+      //////////////////////
+      function city(){
+      /////////////////////
+        const radioBtn = document.querySelectorAll('input[name="location"]');
+        const cityErrorMessage = document.getElementById('CityErrorMessage');
+        let ErrorMessagecity = `Choisissez une ville`
+        if(radioBtn.checked){
+          cityErrorMessage.innerText = ''
+          return true
+        }else {
+          cityErrorMessage.innerText = ErrorMessagecity
+          return false
+        }
+      }
+      
+      //////////////////////
+      function useCondition(){
+      /////////////////////
 
-    //tournaments = faire un check si no valeur = error | num regex
-  }
+        // checkbox use condition check si check on if not => error
+      }
 
-  //////////////////////
-  function City(){
-  /////////////////////
+      //////////////////////
+      function adCheckbox(){
+      /////////////////////
 
-    // radio city search how to listen radio & error if no selection
-  }
-  
-  //////////////////////
-  function useCondition(){
-  /////////////////////
+        // checkbox get.value
+      }
 
-    // checkbox use condition check si check on if not => error
-  }
-
-  //////////////////////
-  function adCheckbox(){
-  /////////////////////
-
-    // checkbox ad listen to get the data
-
-  }
-
-  // IF ALL TRUE = collecting value //
-  //create on object from the data
-  // send the data in Local Storage (JSON.stringify)
-
-
-})
-
-// /!\ TO FIX /!\ //
-
-//penser a faire un switch à la fermeture pour pas revenir sur la validation
+      // IF ALL TRUE = collecting value //
+      //create on object from the data
+      // send the data in Local Storage (JSON.stringify)
+      //penser a faire un switch à la fermeture pour pas revenir sur la validation
+  })
+///////////////////////////////////////////////////////////////////////////////////
