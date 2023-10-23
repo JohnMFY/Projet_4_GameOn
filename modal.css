@@ -516,11 +516,35 @@ footer {
     text-align: center;
   }
 }
-  /* ERROR MESSAGE STYLE*/
+/* ERROR MESSAGE STYLE*/
 .error-message{
   color: red;
   font-size: 1rem;
+  font-style: oblique;
+  font-weight: 300;
 }
+.error-border{
+  border: red solid 1px;
+  margin: 0;
+  padding: 8px;
+  width: 100%;
+  border-radius: 8px;
+  font-size: 20px;
+  height: 48px;
+}
+/* modal-confirmation*/
+.modal-confirmation{
+  display: none;
+  flex-direction: column;
+  text-align: center;
+  justify-items: center;
+  margin: 20rem 0rem 1rem 0rem;
+}
+.text-confirmation{
+ font-size: 2rem;
+ margin-bottom:15rem;
+}
+
 @keyframes modalopen {
   from {
     opacity: 0;

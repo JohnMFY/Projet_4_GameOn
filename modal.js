@@ -32,6 +32,10 @@ function launchModal() {
     document.getElementById('Form').reset()
   })
 
+  const closeBtn2 = document.getElementById('closeBtn')
+  closeBtn2.addEventListener("click",() => {
+    modalbg.style.display = "none"
+  })
 
 ///////////////////////////////////////////////////////////////////////////////////
                           //  TEST OF THE FORM  //
@@ -61,9 +65,11 @@ function launchModal() {
         // if/else to test the regex
         if(Regex_2_20_Letters(first)){
           firstNameErrorMessage.innerHTML = ''
+          document.getElementById('first').className = 'text-control'
           return true
         } else {
           firstNameErrorMessage.innerText = errorMessage
+          document.getElementById('first').className = 'error-border'
           return false
         }
       }
@@ -79,9 +85,11 @@ function launchModal() {
         // if/else to test the regex
         if(Regex_2_20_Letters(last)){
           LastNameErrorMessage.innerHTML = ''
+          document.getElementById('last').className = 'text-control'
           return true
         } else {
           LastNameErrorMessage.innerText = errorMessage
+          document.getElementById('last').className = 'error-border'
           return false
         }
       }
@@ -100,9 +108,11 @@ function launchModal() {
 
         if(regexTestEmail(email)){
           EmailErrorMessage.innerText =''
+          document.getElementById('email').className = 'text-control'
             return true
         } else{
           EmailErrorMessage.innerText = "L'email n'est pas valide"
+          document.getElementById('email').className = 'error-border'
           return false
         }
       }
@@ -115,9 +125,12 @@ function launchModal() {
         if (birthdate == null || !dateRegex.test(birthdate)) {
             const birthdateErrorMessage = getElementById('BirthdateErrorMessage');
             birthdateErrorMessage.innerText = 'Rentrez votre date de naissance'
+            birthdate.className = 'error-border'
             return false;
         } else {
-            return true
+          birthdate.className = 'text-control'
+          return true
+            
         }
       }
       
@@ -128,14 +141,16 @@ function launchModal() {
         if (tournamentsInput == null) {
           const tournamentsErrorMessage = getElementById('TournamentErrorMessage');
           tournamentsErrorMessage.innerText = 'Renseignez ce champ'
+          document.getElementById('quantity').className = 'error-border'
           return false;
         } else {
           tournamentsErrorMessage.innerText = ''
+          document.getElementById('quantity').className = 'text-control'
           return true
         }
       }
 
-      //////////////////////
+      ////////////////////// TO TEST
       function city(){
       /////////////////////
         const radioBtn = document.querySelectorAll('input[name="location"]');
@@ -150,7 +165,7 @@ function launchModal() {
         }
       }
       
-      //////////////////////
+      ////////////////////// TO TEST
       function useCondition(){
       /////////////////////
         const checkUseCondition = document.getElementById('checkbox1')
@@ -164,7 +179,7 @@ function launchModal() {
         }
       }
 
-      //////////////////// Form Values //////////////////////////
+      //////////////////// Form Values ////////////////////////// TO TEST
       const formDataValues = {
         firstName: document.querySelector('#first').value,
         lastName: document.querySelector('#last').value,
@@ -176,16 +191,22 @@ function launchModal() {
         nextEventAd: document.querySelector('#checkbox2').value, 
       }
       /////////////////////////////////////////////////////////
+
+      /////////////////////////////////////// Check if all function true ///////////////////////////////////////////// TO TEST
+
       if(firstNameTest() && lastNameTest() && emailTest() && birthday() && tournaments() && city() && useCondition()){
 
         localStorage.setItem('formDataValues', JSON.stringify(formDataValues))
         console.log(formDataValues, 'Test')
-   
+
+        document.getElementById('Form').display = "none" //check TODO
+        document.getElementById('Form').reset()
+        
+        document.getElementById('modal-confirmation').display	= "flex"
+        
+
+      }else{
+        console.log('ERROR form')
       }
-
-
-      //create on object from the data
-      // send the data in Local Storage (JSON.stringify)
-      //penser a faire un switch à la fermeture pour pas revenir sur la validation
   })
 ///////////////////////////////////////////////////////////////////////////////////

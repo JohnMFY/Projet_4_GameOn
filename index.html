@@ -54,13 +54,13 @@
     <div class="bground" id="bground">
       <div class="content">
         <span class="close" id="close"></span>
-        <div class="modal-body">
+        <div class="modal-body" id="modal-body">
           <form name="reserve" id="Form" action="index.html" method="get" onsubmit="return validate();">
 
             <div class="formData">
               <label>Prénom</label><br>
               <input class="text-control" type="text" id="first" name="first" minlength="2" /><br>
-              <!-- Addition of a place for the error message-->
+             
               <p id="FirstNameErrorMessage" class="error-message"></p>
             </div>
 
@@ -134,14 +134,22 @@
               </label>
 
               <br>
+
             </div>
 
             <input class="btn-submit" id="submit" type="submit" class="button" value="C'est parti" />
           </form>
+      
+          <div class="modal-confirmation" id="modal-confirmation">
+            <p class="text-confirmation"> Merci pour <br> votre inscription</p>
+            <button class="btn-submit" id="closeBtn">Fermer</button>
+          </div> 
 
         </div>
       </div>
     </div>
+
+  
   </main>
   <footer>
     <p class="copyrights">
