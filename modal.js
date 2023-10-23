@@ -107,10 +107,10 @@ function launchModal() {
         }
       }
 
-      //////////////////////
+      ////////////////////// TO FIX
       function birthday(){
       /////////////////////
-        const birthdate = document.forms["form"]["birthdate"].value;
+        const birthdate = document.getElementById('birthdate');
         const dateRegex = /^([0-9]{2})-([0-9]{2})-([0-9]{4})$/;
         if (birthdate == null || !dateRegex.test(birthdate)) {
             const birthdateErrorMessage = getElementById('BirthdateErrorMessage');
@@ -121,7 +121,7 @@ function launchModal() {
         }
       }
       
-      //////////////////////
+      ////////////////////// TO FIX
       function tournaments(){
       /////////////////////
       const tournamentsInput = document.forms["form"]["quantity"].value;
@@ -153,18 +153,37 @@ function launchModal() {
       //////////////////////
       function useCondition(){
       /////////////////////
-
-        // checkbox use condition check si check on if not => error
+        const checkUseCondition = document.getElementById('checkbox1')
+        if (checkUseCondition == null) {
+          const UseConditionsErrorMessag = getElementById('TournamentErrorMessage');
+          UseConditionsErrorMessag.innerText = "Vous devez accépter les conditions d'utilisation"
+          return false;
+        } else {
+          UseConditionsErrorMessag.innerText = ''
+          return true
+        }
       }
 
-      //////////////////////
-      function adCheckbox(){
-      /////////////////////
+      //////////////////// Form Values //////////////////////////
+      const formDataValues = {
+        firstName: document.querySelector('#first').value,
+        lastName: document.querySelector('#last').value,
+        email: document.querySelector('#email').value,
+        birthdate: document.querySelector('#birthdate').value,
+        tournamentsQty: document.querySelector('#quantity').value,
+        city: document.querySelector('#location').value,
+        useCondition: document.querySelector('#checkbox1').value,
+        nextEventAd: document.querySelector('#checkbox2').value, 
+      }
+      /////////////////////////////////////////////////////////
+      if(firstNameTest() && lastNameTest() && emailTest() && birthday() && tournaments() && city() && useCondition()){
 
-        // checkbox get.value
+        localStorage.setItem('formDataValues', JSON.stringify(formDataValues))
+        console.log(formDataValues, 'Test')
+   
       }
 
-      // IF ALL TRUE = collecting value //
+
       //create on object from the data
       // send the data in Local Storage (JSON.stringify)
       //penser a faire un switch à la fermeture pour pas revenir sur la validation
