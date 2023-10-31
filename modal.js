@@ -117,46 +117,51 @@ function launchModal() {
         }
       }
 
-      ////////////////////// TO FIX
+      ///////////////////////// Check if date valid /////////////////////////////
+      const birthdate = document.getElementById('birthdate').value;
+      function isDateValid(birthdate) {
+        return !isNaN(new Date(birthdate));
+      }
+      //////////////////////
       function birthday(){
       /////////////////////
-        const birthdate = document.getElementById('birthdate');
-        const dateRegex = /^([0-9]{2})-([0-9]{2})-([0-9]{4})$/;
-        if (birthdate == null || !dateRegex.test(birthdate)) {
-            const birthdateErrorMessage = getElementById('BirthdateErrorMessage');
+         const birthdateErrorMessage = document.getElementById('BirthdateErrorMessage');
+
+        if (!isDateValid(birthdate)) {
             birthdateErrorMessage.innerText = 'Rentrez votre date de naissance'
             birthdate.className = 'error-border'
             return false;
         } else {
+          birthdateErrorMessage.innerText =''
           birthdate.className = 'text-control'
-          return true
-            
-        }
-      }
-      
-      ////////////////////// TO FIX
-      function tournaments(){
-      /////////////////////
-      const tournamentsInput = document.forms["form"]["quantity"].value;
-        if (tournamentsInput == null) {
-          const tournamentsErrorMessage = getElementById('TournamentErrorMessage');
-          tournamentsErrorMessage.innerText = 'Renseignez ce champ'
-          document.getElementById('quantity').className = 'error-border'
-          return false;
-        } else {
-          tournamentsErrorMessage.innerText = ''
-          document.getElementById('quantity').className = 'text-control'
-          return true
+          return true     
         }
       }
 
-      ////////////////////// TO TEST
+      ////////////////////// TO FIX
+      function tournaments(){
+      /////////////////////
+      const tournamentsInput = document.getElementById('quantity').value;
+      const tournamentsErrorMessage = document.getElementById('TournamentErrorMessage');
+      
+        if (tournamentsInput != null) {
+          tournamentsErrorMessage.innerText = ''
+          document.getElementById('quantity').className = 'text-control'
+          return true
+        } else {
+          tournamentsErrorMessage.innerText = 'Renseignez ce champ'
+          document.getElementById('quantity').className = 'error-border'
+          return false;
+        }
+      } 
+
+      ////////////////////// TO FIX
       function city(){
       /////////////////////
-        const radioBtn = document.querySelectorAll('input[name="location"]');
+        const radioBtn = document.querySelector('input[name="location"]:checked');
         const cityErrorMessage = document.getElementById('CityErrorMessage');
         let ErrorMessagecity = `Choisissez une ville`
-        if(radioBtn.checked){
+        if(radioBtn.checked != null){
           cityErrorMessage.innerText = ''
           return true
         }else {
@@ -164,7 +169,7 @@ function launchModal() {
           return false
         }
       }
-      
+
       ////////////////////// TO TEST
       function useCondition(){
       /////////////////////
@@ -178,33 +183,38 @@ function launchModal() {
           return true
         }
       }
-
-      //////////////////// Form Values ////////////////////////// TO TEST
-      const formDataValues = {
-        firstName: document.querySelector('#first').value,
-        lastName: document.querySelector('#last').value,
-        email: document.querySelector('#email').value,
-        birthdate: document.querySelector('#birthdate').value,
-        tournamentsQty: document.querySelector('#quantity').value,
-        city: document.querySelector('#location').value,
-        useCondition: document.querySelector('#checkbox1').value,
-        nextEventAd: document.querySelector('#checkbox2').value, 
-      }
-      /////////////////////////////////////////////////////////
+/*
+      var getSelectedValue = document.querySelector( 'input[name="season"]:checked');   
+        if(getSelectedValue != null) {   
+                document.write("Radio button is selected");  
+        else {  
+                document.write("Nothing has been selected");  
+*/
 
       /////////////////////////////////////// Check if all function true ///////////////////////////////////////////// TO TEST
 
       if(firstNameTest() && lastNameTest() && emailTest() && birthday() && tournaments() && city() && useCondition()){
 
+        //////////////////// Form Values ////////////////////////// TO TEST
+          const formDataValues = {
+            firstName: document.querySelector('#first').value,
+            lastName: document.querySelector('#last').value,
+            email: document.querySelector('#email').value,
+            birthdate: document.querySelector('#birthdate').value,
+            tournamentsQty: document.querySelector('#quantity').value,
+            city: document.querySelector('#location').value,
+            useCondition: document.querySelector('#checkbox1').value,
+            nextEventAd: document.querySelector('#checkbox2').value, 
+          }
+      /////////////////////////////////////////////////////////
         localStorage.setItem('formDataValues', JSON.stringify(formDataValues))
-        console.log(formDataValues, 'Test')
+        console.log(formDataValues)
 
         document.getElementById('Form').display = "none" //check TODO
         document.getElementById('Form').reset()
         
         document.getElementById('modal-confirmation').display	= "flex"
         
-
       }else{
         console.log('ERROR form')
       }
