@@ -174,7 +174,7 @@ function launchModal() {
       }
       
       
-      ////////////////////// TO CHECK
+      ////////////////////// TO CHECK AUTO CHECK if not check when 
       function useCondition(){
       /////////////////////
         const checkUseCondition = document.getElementById('checkbox1')
@@ -205,9 +205,13 @@ function launchModal() {
             nextEventAd: document.querySelector('#checkbox2').value, 
           }
       /////////////////////////////////////////////////////////
+
+      //////////////////// INSCRIPTION DATA OBJECT /////////////////////////// 
         localStorage.setItem('formDataValues', JSON.stringify(formDataValues))
         console.log(formDataValues)
+      ///////////////////////////////////////////////////////////////////////    
 
+      /////////////////////// MODAL VALIDATION ////////////////////// TO FIX /!\
         document.getElementById('Form').display = "none" //check TODO
         document.getElementById('Form').reset()
         
