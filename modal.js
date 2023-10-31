@@ -138,13 +138,13 @@ function launchModal() {
         }
       }
 
-      ////////////////////// TO FIX 0 don't work
+      //////////////////////
       function tournaments(){
       /////////////////////
       const tournamentsInput = document.getElementById('quantity').value;
       const tournamentsErrorMessage = document.getElementById('TournamentErrorMessage');
       
-        if (Number(tournamentsInput)) {
+        if (!isNaN(tournamentsInput)) {
           tournamentsErrorMessage.innerText = ''
           document.getElementById('quantity').className = 'text-control'
           console.log(tournamentsInput, 'qty true')
