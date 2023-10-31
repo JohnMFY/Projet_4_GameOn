@@ -138,38 +138,45 @@ function launchModal() {
         }
       }
 
-      ////////////////////// TO FIX
+      ////////////////////// TO FIX 0 don't work
       function tournaments(){
       /////////////////////
       const tournamentsInput = document.getElementById('quantity').value;
       const tournamentsErrorMessage = document.getElementById('TournamentErrorMessage');
       
-        if (tournamentsInput != null) {
+        if (Number(tournamentsInput)) {
           tournamentsErrorMessage.innerText = ''
           document.getElementById('quantity').className = 'text-control'
+          console.log(tournamentsInput, 'qty true')
           return true
         } else {
           tournamentsErrorMessage.innerText = 'Renseignez ce champ'
           document.getElementById('quantity').className = 'error-border'
+          console.log(tournamentsInput,'qty false')
           return false;
+          
         }
       } 
 
       ////////////////////// TO FIX
       function city(){
       /////////////////////
-        const radioBtn = document.querySelector('input[name="location"]:checked');
+        const radioBtn = document.querySelector('input[name="location"]:checked'.value);
         const cityErrorMessage = document.getElementById('CityErrorMessage');
+      
         let ErrorMessagecity = `Choisissez une ville`
-        if(radioBtn.checked != null){
+        if(radioBtn != null){
           cityErrorMessage.innerText = ''
+          console.log('city true')
           return true
         }else {
           cityErrorMessage.innerText = ErrorMessagecity
+          console.log('city false')
           return false
         }
       }
-
+      
+      
       ////////////////////// TO TEST
       function useCondition(){
       /////////////////////
