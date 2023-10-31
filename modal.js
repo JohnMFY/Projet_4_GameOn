@@ -147,21 +147,19 @@ function launchModal() {
         if (!isNaN(tournamentsInput)) {
           tournamentsErrorMessage.innerText = ''
           document.getElementById('quantity').className = 'text-control'
-          console.log(tournamentsInput, 'qty true')
           return true
         } else {
           tournamentsErrorMessage.innerText = 'Renseignez ce champ'
           document.getElementById('quantity').className = 'error-border'
-          console.log(tournamentsInput,'qty false')
           return false;
           
         }
       } 
 
-      ////////////////////// TO FIX
+      //////////////////////
       function city(){
       /////////////////////
-        const radioBtn = document.querySelector('input[name="location"]:checked'.value);
+        const radioBtn = document.querySelector('input[name="location"]:checked');
         const cityErrorMessage = document.getElementById('CityErrorMessage');
       
         let ErrorMessagecity = `Choisissez une ville`
@@ -171,18 +169,18 @@ function launchModal() {
           return true
         }else {
           cityErrorMessage.innerText = ErrorMessagecity
-          console.log('city false')
           return false
         }
       }
       
       
-      ////////////////////// TO TEST
+      ////////////////////// TO CHECK
       function useCondition(){
       /////////////////////
         const checkUseCondition = document.getElementById('checkbox1')
-        if (checkUseCondition == null) {
-          const UseConditionsErrorMessag = getElementById('TournamentErrorMessage');
+        const UseConditionsErrorMessag = document.getElementById('UseConditionsErrorMessage');
+
+        if (checkUseCondition == null) {         
           UseConditionsErrorMessag.innerText = "Vous devez accépter les conditions d'utilisation"
           return false;
         } else {
@@ -190,19 +188,12 @@ function launchModal() {
           return true
         }
       }
-/*
-      var getSelectedValue = document.querySelector( 'input[name="season"]:checked');   
-        if(getSelectedValue != null) {   
-                document.write("Radio button is selected");  
-        else {  
-                document.write("Nothing has been selected");  
-*/
 
-      /////////////////////////////////////// Check if all function true ///////////////////////////////////////////// TO TEST
+    /////////////////////////////////////// Check if all function true /////////////////////////////////////////////
 
       if(firstNameTest() && lastNameTest() && emailTest() && birthday() && tournaments() && city() && useCondition()){
 
-        //////////////////// Form Values ////////////////////////// TO TEST
+        //////////////////// Form Values ////////////////////////// TO FIX CITY UNDIFIND
           const formDataValues = {
             firstName: document.querySelector('#first').value,
             lastName: document.querySelector('#last').value,
