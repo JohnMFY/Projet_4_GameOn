@@ -165,7 +165,6 @@ function launchModal() {
         let ErrorMessagecity = `Choisissez une ville`
         if(radioBtn != null){
           cityErrorMessage.innerText = ''
-          console.log('city true')
           return true
         }else {
           cityErrorMessage.innerText = ErrorMessagecity
@@ -200,7 +199,7 @@ function launchModal() {
             email: document.querySelector('#email').value,
             birthdate: document.querySelector('#birthdate').value,
             tournamentsQty: document.querySelector('#quantity').value,
-            city: document.querySelector('#location').value,
+            city: document.querySelector('input[name="location"]:checked').value,
             useCondition: document.querySelector('#checkbox1').value,
             nextEventAd: document.querySelector('#checkbox2').value, 
           }
