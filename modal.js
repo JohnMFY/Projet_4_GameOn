@@ -54,7 +54,7 @@ function launchModal() {
         let errorMessage = `Chiffre et symboles ne sont pas autorisé. Nombre de caractères autorisés 2 à 20.`
       /////////////////////////////////////////////////////////////////////
       
-      //////////////////////
+      ////////////////////// //appeler avec parametres
       function firstNameTest(){
       /////////////////////
 
@@ -173,10 +173,10 @@ function launchModal() {
       }
       
       
-      ////////////////////// TO CHECK AUTO CHECK if not check when 
+      ////////////////////// TO CHECK : AUTO CHECK if not check when sending the form
       function useCondition(){
       /////////////////////
-        const checkUseCondition = document.getElementById('checkbox1')
+        const checkUseCondition = document.getElementById('checkbox1')//:checked
         const UseConditionsErrorMessag = document.getElementById('UseConditionsErrorMessage');
 
         if (checkUseCondition == null) {         
@@ -192,7 +192,7 @@ function launchModal() {
 
       if(firstNameTest() && lastNameTest() && emailTest() && birthday() && tournaments() && city() && useCondition()){
 
-        //////////////////// Form Values ////////////////////////// TO FIX CITY UNDIFIND
+        //////////////////// Form Values //////////////////////////
           const formDataValues = {
             firstName: document.querySelector('#first').value,
             lastName: document.querySelector('#last').value,
@@ -212,7 +212,7 @@ function launchModal() {
 
       /////////////////////// MODAL VALIDATION ////////////////////// TO FIX /!\
         document.getElementById('Form').display = "none" //check TODO
-        document.getElementById('Form').reset()
+        //document.getElementById('Form').reset()
         
         document.getElementById('modal-confirmation').display	= "flex"
         
