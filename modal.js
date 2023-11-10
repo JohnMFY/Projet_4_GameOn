@@ -18,6 +18,8 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
+  document.getElementById('modal-confirmation').style.display = 'none'
+  document.getElementById('Form').style.display = 'block'
 }
 
 
@@ -173,10 +175,10 @@ function launchModal() {
       }
       
       
-      ////////////////////// TO CHECK : AUTO CHECK if not check when sending the form
+      //////////////////////
       function useCondition(){
       /////////////////////
-        const checkUseCondition = document.querySelector('input[name="checkbox1"]:checked')//:checked
+        const checkUseCondition = document.querySelector('input[name="checkbox1"]:checked')
         const UseConditionsErrorMessag = document.getElementById('UseConditionsErrorMessage');
 
         if (checkUseCondition == null) {         
@@ -210,12 +212,10 @@ function launchModal() {
         console.log(formDataValues)
       ///////////////////////////////////////////////////////////////////////    
 
-      /////////////////////// MODAL VALIDATION ////////////////////// TO FIX /!\
-        document.getElementById('Form').display = "none" //check TODO
-        //document.getElementById('Form').reset()
-        
-        document.getElementById('modal-confirmation').display	= "flex"
-        
+      /////////////////////// MODAL VALIDATION //////////////////////
+      document.getElementById('Form').reset()
+      document.getElementById('modal-confirmation').style.display = 'block'
+      document.getElementById('Form').style.display = 'none'
       }else{
         console.log('ERROR form')
       }
