@@ -176,7 +176,7 @@ function launchModal() {
       ////////////////////// TO CHECK : AUTO CHECK if not check when sending the form
       function useCondition(){
       /////////////////////
-        const checkUseCondition = document.getElementById('checkbox1')//:checked
+        const checkUseCondition = document.querySelector('input[name="checkbox1"]:checked')//:checked
         const UseConditionsErrorMessag = document.getElementById('UseConditionsErrorMessage');
 
         if (checkUseCondition == null) {         
