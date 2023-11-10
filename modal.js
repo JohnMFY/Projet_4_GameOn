@@ -49,152 +49,150 @@ function launchModal() {
   submit.addEventListener('click', (e) =>{
     e.preventDefault()
 
-      /////////// Common Regex First & Last name + error message ///////////
-        const Regex_2_20_Letters = (test) =>{
-          return /^[A-Z a-z\s]{3,20}$/.test(test)
-        }
-        let errorMessage = `Chiffre et symboles ne sont pas autorisé. Nombre de caractères autorisés 2 à 20.`
-      /////////////////////////////////////////////////////////////////////
-      
-      ////////////////////// //appeler avec parametres
-      function firstNameTest(){
-      /////////////////////
-
-        // catch the entry
-        const first = document.querySelector('#first').value
-        const firstNameErrorMessage = document.getElementById('FirstNameErrorMessage')
-
-        // if/else to test the regex
-        if(Regex_2_20_Letters(first)){
-          firstNameErrorMessage.innerHTML = ''
-          document.getElementById('first').className = 'text-control'
-          return true
-        } else {
-          firstNameErrorMessage.innerText = errorMessage
-          document.getElementById('first').className = 'error-border'
-          return false
-        }
+    /////////// Common Regex First & Last name + error message ///////////
+      const Regex_2_20_Letters = (test) =>{
+        return /^[A-Z a-z\s]{3,20}$/.test(test)
       }
+      let errorMessage = `Chiffre et symboles ne sont pas autorisé. Nombre de caractères autorisés 2 à 20.`
+    /////////////////////////////////////////////////////////////////////
+    
+    ////////////////////// //appeler avec parametres
+    function firstNameTest(){
+     /////////////////////
+
+      // catch the entry
+      const first = document.querySelector('#first').value
+      const firstNameErrorMessage = document.getElementById('FirstNameErrorMessage')
+
+      // if/else to test the regex
+      if(Regex_2_20_Letters(first)){
+        firstNameErrorMessage.innerHTML = ''
+        document.getElementById('first').className = 'text-control'
+        return true
+      } else {
+        firstNameErrorMessage.innerText = errorMessage
+        document.getElementById('first').className = 'error-border'
+        return false
+      }
+    }
         
-      //////////////////////
-      function lastNameTest(){
-      /////////////////////
-        
-        // catch the entry
-        const last = document.querySelector('#last').value
-        const LastNameErrorMessage = document.getElementById('LastNameErrorMessage')
+    //////////////////////
+    function lastNameTest(){
+     /////////////////////
+      const last = document.querySelector('#last').value
+      const LastNameErrorMessage = document.getElementById('LastNameErrorMessage')
 
-        // if/else to test the regex
-        if(Regex_2_20_Letters(last)){
-          LastNameErrorMessage.innerHTML = ''
-          document.getElementById('last').className = 'text-control'
+      if(Regex_2_20_Letters(last)){
+        LastNameErrorMessage.innerHTML = ''
+        document.getElementById('last').className = 'text-control'
+        return true
+      } else {
+        LastNameErrorMessage.innerText = errorMessage
+        document.getElementById('last').className = 'error-border'
+        return false
+      }
+    }
+
+    //////////////////////Regex email//////////////////////
+      const regexTestEmail = (test) =>{
+        return /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(test)
+      }
+    //////////////////////////////////////////////////////
+
+    //////////////////////
+    function emailTest(){
+     /////////////////////
+      const email = document.querySelector('#email').value
+      const EmailErrorMessage = document.getElementById('EmailErrorMessage')
+
+      if(regexTestEmail(email)){
+        EmailErrorMessage.innerText =''
+        document.getElementById('email').className = 'text-control'
           return true
-        } else {
-          LastNameErrorMessage.innerText = errorMessage
-          document.getElementById('last').className = 'error-border'
-          return false
-        }
+      } else{
+        EmailErrorMessage.innerText = "L'email n'est pas valide"
+        document.getElementById('email').className = 'error-border'
+        return false
       }
+    }
 
-      //////////////////////Regex email//////////////////////
-        const regexTestEmail = (test) =>{
-          return /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(test)
-        }
-      //////////////////////////////////////////////////////
+    ///////////////////////// Check if date valid /////////////////////////////
+    const birthdate = document.getElementById('birthdate').value;
+    function isDateValid(birthdate) {
+      return !isNaN(new Date(birthdate));
+    }
+    //////////////////////
+    function birthday(){
+     /////////////////////
+      const birthdateErrorMessage = document.getElementById('BirthdateErrorMessage');
 
-      //////////////////////
-      function emailTest(){
-      /////////////////////
-        const email = document.querySelector('#email').value
-        const EmailErrorMessage = document.getElementById('EmailErrorMessage')
-
-        if(regexTestEmail(email)){
-          EmailErrorMessage.innerText =''
-          document.getElementById('email').className = 'text-control'
-            return true
-        } else{
-          EmailErrorMessage.innerText = "L'email n'est pas valide"
-          document.getElementById('email').className = 'error-border'
-          return false
-        }
+      if (!isDateValid(birthdate)) {
+          birthdateErrorMessage.innerText = 'Rentrez votre date de naissance'
+          birthdate.className = 'error-border'
+          return false;
+      } else {
+        birthdateErrorMessage.innerText =''
+        birthdate.className = 'text-control'
+        return true     
       }
+    }
 
-      ///////////////////////// Check if date valid /////////////////////////////
-      const birthdate = document.getElementById('birthdate').value;
-      function isDateValid(birthdate) {
-        return !isNaN(new Date(birthdate));
-      }
-      //////////////////////
-      function birthday(){
-      /////////////////////
-         const birthdateErrorMessage = document.getElementById('BirthdateErrorMessage');
-
-        if (!isDateValid(birthdate)) {
-            birthdateErrorMessage.innerText = 'Rentrez votre date de naissance'
-            birthdate.className = 'error-border'
-            return false;
-        } else {
-          birthdateErrorMessage.innerText =''
-          birthdate.className = 'text-control'
-          return true     
-        }
-      }
-
-      //////////////////////
-      function tournaments(){
-      /////////////////////
+    //////////////////////
+    function tournaments(){
+     /////////////////////
       const tournamentsInput = document.getElementById('quantity').value;
       const tournamentsErrorMessage = document.getElementById('TournamentErrorMessage');
-      
-        if (!isNaN(tournamentsInput)) {
-          tournamentsErrorMessage.innerText = ''
-          document.getElementById('quantity').className = 'text-control'
-          return true
-        } else {
-          tournamentsErrorMessage.innerText = 'Renseignez ce champ'
-          document.getElementById('quantity').className = 'error-border'
-          return false;
-          
-        }
-      } 
-
-      //////////////////////
-      function city(){
-      /////////////////////
-        const radioBtn = document.querySelector('input[name="location"]:checked');
-        const cityErrorMessage = document.getElementById('CityErrorMessage');
-      
-        let ErrorMessagecity = `Choisissez une ville`
-        if(radioBtn != null){
-          cityErrorMessage.innerText = ''
-          return true
-        }else {
-          cityErrorMessage.innerText = ErrorMessagecity
-          return false
-        }
+    
+      if (isNaN(tournamentsInput) || tournamentsInput == null || tournamentsInput == '') {
+        tournamentsErrorMessage.innerText = 'Renseignez ce champ'
+        document.getElementById('quantity').className = 'error-border'
+        console.log('KO', tournamentsInput)
+        return false;
+      } else {
+        tournamentsErrorMessage.innerText = ''
+        document.getElementById('quantity').className = 'text-control'
+        console.log('OK', tournamentsInput)
+        return true
       }
-      
-      
-      //////////////////////
-      function useCondition(){
-      /////////////////////
-        const checkUseCondition = document.querySelector('input[name="checkbox1"]:checked')
-        const UseConditionsErrorMessag = document.getElementById('UseConditionsErrorMessage');
+    } 
 
-        if (checkUseCondition == null) {         
-          UseConditionsErrorMessag.innerText = "Vous devez accépter les conditions d'utilisation"
-          return false;
-        } else {
-          UseConditionsErrorMessag.innerText = ''
-          return true
-        }
+    //////////////////////
+    function city(){
+     /////////////////////
+      const radioBtn = document.querySelector('input[name="location"]:checked');
+      const cityErrorMessage = document.getElementById('CityErrorMessage');
+      const ErrorMessagecity = `Choisissez une ville`
+
+      if(radioBtn != null){
+        cityErrorMessage.innerText = ''
+        return true
+      }else {
+        cityErrorMessage.innerText = ErrorMessagecity
+        return false
       }
+    }
+    
+    
+    //////////////////////
+    function useCondition(){
+     /////////////////////
+      const checkUseCondition = document.querySelector('input[name="checkbox1"]:checked')
+      const UseConditionsErrorMessag = document.getElementById('UseConditionsErrorMessage');
 
-    /////////////////////////////////////// Check if all function true /////////////////////////////////////////////
+      if (checkUseCondition == null) {         
+        UseConditionsErrorMessag.innerText = "Vous devez accépter les conditions d'utilisation"
+        return false;
+      } else {
+        UseConditionsErrorMessag.innerText = ''
+        return true
+      }
+    }
+
+    /////////////////////////////////////// Check if all function true /////////////////////////////////////////////////
 
       if(firstNameTest() && lastNameTest() && emailTest() && birthday() && tournaments() && city() && useCondition()){
 
-        //////////////////// Form Values //////////////////////////
+        //////////////////////////// Form Values //////////////////////////////////
           const formDataValues = {
             firstName: document.querySelector('#first').value,
             lastName: document.querySelector('#last').value,
@@ -205,19 +203,23 @@ function launchModal() {
             useCondition: document.querySelector('#checkbox1').value,
             nextEventAd: document.querySelector('#checkbox2').value, 
           }
-      /////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////
 
-      //////////////////// INSCRIPTION DATA OBJECT /////////////////////////// 
-        localStorage.setItem('formDataValues', JSON.stringify(formDataValues))
-        console.log(formDataValues)
-      ///////////////////////////////////////////////////////////////////////    
+        //////////////////// INSCRIPTION DATA OBJECT /////////////////////////// 
+          localStorage.setItem('formDataValues', JSON.stringify(formDataValues))
+          console.log(formDataValues)
+        ///////////////////////////////////////////////////////////////////////    
 
-      /////////////////////// MODAL VALIDATION //////////////////////
-      document.getElementById('Form').reset()
-      document.getElementById('modal-confirmation').style.display = 'block'
-      document.getElementById('Form').style.display = 'none'
+        /////////////////////// MODAL VALIDATION //////////////////////
+          document.getElementById('Form').reset()
+          document.getElementById('modal-confirmation').style.display = 'block'
+          document.getElementById('Form').style.display = 'none'
+        ///////////////////////////////////////////////////////////////
+
       }else{
         console.log('ERROR form')
       }
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
   })
 ///////////////////////////////////////////////////////////////////////////////////
